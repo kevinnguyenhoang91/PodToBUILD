@@ -97,7 +97,7 @@ compile_commands.json:
 
 
 
-TESTED_BAZEL_VERSION=0.25.2.swift.visibility
+TESTED_BAZEL_VERSION=0.25.2.swift.visibility.modulename
 
 # Make a binary archive of PodToBUILD with the official github cli `hub`
 github_release:

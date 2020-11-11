@@ -974,6 +974,10 @@ public struct ObjcLibrary: BazelTarget, UserConfigurable, SourceExcludable {
             name: "visibility",
             value: ["//visibility:public"].toSkylark()
         ))
+        libArguments.append(.named(
+            name: "alwayslink",
+            value: Int(1).toSkylark()
+        ))
         return .lines(inlineSkylark + [.functionCall(name: "objc_library", arguments: libArguments)])
     }
 }

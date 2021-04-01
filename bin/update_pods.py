@@ -469,15 +469,15 @@ def _vendorize_bazel_extensions_if_needed():
     current_dir = os.path.dirname(os.path.realpath(__file__))
     rules_pods_root = os.path.dirname(current_dir)
     install_root = os.path.dirname(rules_pods_root)
-    if os.path.basename(install_root) == "external":
-        bazel_extension_dir = os.path.join(rules_pods_root, "BazelExtensions")
-        pods_dir = SRC_ROOT + "/Vendor"
-        rules_pods_root =  os.path.join(pods_dir, "rules_pods")
-        vendor_path =  os.path.join(rules_pods_root, "BazelExtensions")
-        if os.path.isdir(rules_pods_root):
-            shutil.rmtree(rules_pods_root)
-        os.makedirs(rules_pods_root)
-        shutil.copytree(bazel_extension_dir, vendor_path)
+    # if os.path.basename(install_root) == "external":
+    bazel_extension_dir = os.path.join(rules_pods_root, "BazelExtensions")
+    pods_dir = SRC_ROOT + "/Vendor"
+    rules_pods_root =  os.path.join(pods_dir, "rules_pods")
+    vendor_path =  os.path.join(rules_pods_root, "BazelExtensions")
+    if os.path.isdir(rules_pods_root):
+        shutil.rmtree(rules_pods_root)
+    os.makedirs(rules_pods_root)
+    shutil.copytree(bazel_extension_dir, vendor_path)
 
 def load(path):
     """

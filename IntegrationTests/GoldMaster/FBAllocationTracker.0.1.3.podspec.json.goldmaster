@@ -230,7 +230,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "FBAllocationTracker_cxx_acknowledgement",
@@ -399,7 +400,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "FBAllocationTracker_acknowledgement",

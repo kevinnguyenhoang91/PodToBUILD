@@ -26,11 +26,16 @@ pod_test:
 # Build everything in this workspace
 .PHONY: build
 build: info
-	$(BAZEL) build :* $(BAZEL_OPTS)
+	$(BAZEL) build @ReactNative//:* $(BAZEL_OPTS)
 
 .PHONY: app
 app: info
-	$(BAZEL) build :ReactNativeApp $(BAZEL_OPTS)
+	$(BAZEL) build @ReactNative//:ReactNativeApp $(BAZEL_OPTS)
+	# $(BAZEL) build @ReactNative//Vendor/React-CoreModules:React-CoreModules $(BAZEL_OPTS)
+	
+.PHONY: run
+run: info
+	$(BAZEL) run @ReactNative//:ReactNativeApp $(BAZEL_OPTS)
 
 test: info
 	$(BAZEL) test :* $(BAZEL_OPTS)
@@ -48,7 +53,7 @@ vendorize:
 
 fetch: info
 	[[ ! -f Pods.WORKSPACE ]] || $(MAKE) vendorize
-	$(BAZEL) fetch :* $(REPOSITORY_OVERRIDE)
+	$(BAZEL) fetch @ReactNative//:* $(REPOSITORY_OVERRIDE)
 
 info:
 	$(BAZEL) info $(REPOSITORY_OVERRIDE)

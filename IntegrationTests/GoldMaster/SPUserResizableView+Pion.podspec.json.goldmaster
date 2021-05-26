@@ -129,7 +129,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "SPUserResizableView_Pion_acknowledgement",

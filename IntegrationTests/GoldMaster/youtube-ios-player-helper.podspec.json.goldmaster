@@ -335,7 +335,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "youtube-ios-player-helper_cxx_acknowledgement",
@@ -583,7 +584,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "youtube-ios-player-helper_acknowledgement",

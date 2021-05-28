@@ -11,6 +11,9 @@ import Foundation
 public indirect enum SkylarkNode {
     /// A integer in Skylark.
     case int(Int)
+    
+    /// A boolean in Skylark.
+    case bool(Bool)
 
     /// A string in Skylark.
     /// @note The string value is enclosed within ""
@@ -123,6 +126,8 @@ public struct SkylarkCompiler {
         switch node {
         case let .int(value):
             return "\(value)"
+        case let .bool(value):
+            return value ? "True" : "False" 
         case let .string(value):
             return "\"\(value)\""
         case let .multiLineString(value):

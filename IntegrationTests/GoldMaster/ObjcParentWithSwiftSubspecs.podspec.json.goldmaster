@@ -99,7 +99,8 @@ swift_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 filegroup(
   name = "ObjcParentWithSwiftSubspecs_direct_hdrs",
@@ -228,7 +229,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "ObjcParentWithSwiftSubspecs_acknowledgement",
@@ -353,7 +355,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Default_acknowledgement",
@@ -449,7 +452,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Subspec_acknowledgement",

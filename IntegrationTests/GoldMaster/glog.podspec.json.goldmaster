@@ -166,7 +166,8 @@ objc_library(
   ),
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "glog_acknowledgement",

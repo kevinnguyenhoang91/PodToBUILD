@@ -44,6 +44,12 @@ extension Int: SkylarkConvertible {
     }
 }
 
+extension Bool: SkylarkConvertible {
+    public func toSkylark() -> SkylarkNode {
+        return .bool(self)
+    }
+}
+
 extension String: SkylarkConvertible {
     public func toSkylark() -> SkylarkNode {
         return .string(self)

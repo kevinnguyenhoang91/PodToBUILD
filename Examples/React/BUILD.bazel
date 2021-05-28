@@ -1,0 +1,64 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@rules_cc//cc:defs.bzl", "objc_library")
+
+objc_library(
+    name = "AppClasses",
+    srcs = [
+        "App/AppDelegate.mm",
+        "App/main.m",
+    ],
+    hdrs = glob(["App/*.h"]),
+    sdk_frameworks = [
+        "QuartzCore",
+        "CFNetwork",
+        "CoreGraphics",
+        "ImageIO",
+        "Security",
+        "Accelerate",
+        "AudioToolbox",
+        "JavaScriptCore",
+        "MobileCoreServices",
+    ],
+    deps = [
+        "@ReactNative//Vendor/React:React",
+        # "@ReactNative//Vendor/React:React_hmap",
+        "@ReactNative//Vendor/React-CoreModules:React-CoreModules",
+        "@ReactNative//Vendor/React-Core:React-Core",
+        "@ReactNative//Vendor/React-Core:Default",
+        "@ReactNative//Vendor/React-Core:Hermes",
+        "@ReactNative//Vendor/React-Core:DevSupport",
+        "@ReactNative//Vendor/Flipper:Flipper",
+        "@ReactNative//Vendor/FlipperKit:FlipperKit",
+        "@ReactNative//Vendor/FlipperKit:FBDefines",
+        "@ReactNative//Vendor/FlipperKit:CppBridge",
+        "@ReactNative//Vendor/FlipperKit:FBCxxFollyDynamicConvert",
+        "@ReactNative//Vendor/FlipperKit:FKPortForwarding",
+        "@ReactNative//Vendor/FlipperKit:Core",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitHighlightOverlay",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitLayoutTextSearchable",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitLayoutPlugin",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitNetworkPlugin",
+        "@ReactNative//Vendor/FlipperKit:SKIOSNetworkPlugin",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitUserDefaultsPlugin",
+        "@ReactNative//Vendor/FlipperKit:FlipperKitReactPlugin",
+    ],
+    copts = [
+        # "-I$(GENDIR)/Vendor/React/React_hmap.hmap",
+        # "-I.",
+        "-DFB_SONARKIT_ENABLED=1",
+    ],    
+)
+
+ios_application(
+    name = "ReactNativeApp",
+    bundle_id = "example.app",
+    families = [
+        "iphone",
+    ],
+    infoplists = ["App/Info.plist"],
+    minimum_os_version = "11.0",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":AppClasses",
+    ],
+)

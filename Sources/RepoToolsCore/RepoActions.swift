@@ -574,6 +574,7 @@ public enum RepoActions {
             } else if
                 lowercasedFileName.hasSuffix("tar")
                 || lowercasedFileName.hasSuffix("tar.gz")
+                || lowercasedFileName.hasSuffix("tar.bz2")
                 || lowercasedFileName.hasSuffix("tgz")
             {
                 return shell.command(CommandBinary.sh, arguments: [

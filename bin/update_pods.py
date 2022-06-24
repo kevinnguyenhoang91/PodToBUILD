@@ -138,7 +138,6 @@ def GetVersion(invocation_info):
     repo_tool_hash = HashFile(_getRepoToolPath())
     ctx_hash = str(hash(repository_ctx.GetIdentifier()))
     child_pods = str(hash("".join([c.url for c in invocation_info.child_pods]))) if invocation_info.child_pods else ""
-    print("version: " + self_hash + " " + repo_tool_hash + " " + ctx_hash + " " + child_pods)
     return self_hash + repo_tool_hash + ctx_hash + child_pods
 
 # Compiler Options

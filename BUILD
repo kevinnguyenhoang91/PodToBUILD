@@ -90,14 +90,14 @@ load(
 py_runtime(
     name = "python3",
     interpreter_path = "/usr/bin/python3",
-    stub_shebang = "#!/usr/bin/env python3",
+    stub_shebang = "#!/usr/bin/env PYTHONHASHSEED=1 python3",
     python_version = "PY3",
 )
 
 py_runtime(
     name = "python2",
     interpreter_path = "/usr/bin/python3",
-    stub_shebang = "#!/usr/bin/env python3",
+    stub_shebang = "#!/usr/bin/env PYTHONHASHSEED=1 python3",
     python_version = "PY2",
 )
 

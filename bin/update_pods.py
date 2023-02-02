@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env PYTHONHASHSEED=1 python3
 # update_pods.py Installs pods specified in Pods.WORKSPACE to $SRC_ROOT/Vendor/
 
 from subprocess import Popen, PIPE
@@ -33,7 +33,7 @@ def _exec(repository_ctx, command, cwd = None):
         print(result)
     if cwd:
         os.chdir(origWD)
-    return result
+    return result.decode("latin-1")
 
 def _cli_bool(b):
     if b:
@@ -131,7 +131,7 @@ class PodRepositoryContext(object):
         return self.trace
 
 def HashFile(path):
-    f = open(path, "rb")
+    f = open(path, "rb", encoding="latin-1")
     f_hash = str(hash(f.read()))
     f.close()
     return str(f_hash)
@@ -142,6 +142,7 @@ def GetVersion(invocation_info):
     repo_tool_hash = HashFile(_getRepoToolPath())
     ctx_hash = str(hash(repository_ctx.GetIdentifier()))
     child_pods = str(hash("".join([c.url for c in invocation_info.child_pods]))) if invocation_info.child_pods else ""
+    print("version: " + self_hash + " " + repo_tool_hash + " " + ctx_hash + " " + child_pods)
     return self_hash + repo_tool_hash + ctx_hash + child_pods
 
 # Compiler Options
@@ -348,7 +349,7 @@ def _update_repo_impl(invocation_info):
             ["/bin/bash", "-c", script],
             repository_ctx.GetPodRootDir())
 
-    with open(repository_ctx.GetPodRootDir() + "/.pod-version", "w") as version_file:
+    with open(repository_ctx.GetPodRootDir() + "/.pod-version", "w", encoding="latin-1") as version_file:
         version_file.write(GetVersion(invocation_info))
 
 def new_pod_repository(name,

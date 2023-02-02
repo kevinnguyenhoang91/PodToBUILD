@@ -180,7 +180,7 @@ def action_write(name, args):
 
     input_path,output_path = args
 
-    with open(input_path, "r") as f:
+    with open(input_path, "r", encoding="latin-1") as f:
         input_data = json.load(f)
 
     # Compute the headermap contents, we make a table that is 1/3 full.
@@ -277,7 +277,7 @@ def action_tovfs(name, args):
                 'type' : 'file',
                 'external-contents' : value })
 
-    with open(output_path, 'w') as f:
+    with open(output_path, 'w', encoding="latin-1") as f:
         json.dump(vfs, f, indent=2)
 
 commands = dict((name[7:].replace("_","-"), f)

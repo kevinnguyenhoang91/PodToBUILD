@@ -578,6 +578,7 @@ public enum RepoActions {
             } else if
                 lowercasedFileName.hasSuffix("tar")
                 || lowercasedFileName.hasSuffix("tar.gz")
+                || lowercasedFileName.hasSuffix("tar.bz2")
                 || lowercasedFileName.hasSuffix("tgz")
                 || lowercasedFileName.hasSuffix("txz") // txz is a txz extension
                 || lowercasedFileName.hasSuffix("tar.xz") // tar.xz is a txz extension

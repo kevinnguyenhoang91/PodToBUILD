@@ -30,5 +30,6 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
   )

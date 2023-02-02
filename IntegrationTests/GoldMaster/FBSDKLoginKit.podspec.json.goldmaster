@@ -146,7 +146,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "FBSDKLoginKit_acknowledgement",

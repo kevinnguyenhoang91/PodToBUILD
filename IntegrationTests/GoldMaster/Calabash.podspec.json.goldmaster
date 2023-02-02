@@ -190,7 +190,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Calabash_cxx_acknowledgement",
@@ -309,7 +310,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Calabash_acknowledgement",

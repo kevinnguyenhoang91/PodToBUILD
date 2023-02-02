@@ -168,7 +168,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "React_acknowledgement",
@@ -357,7 +358,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Core_acknowledgement",
@@ -466,7 +468,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "ART_acknowledgement",
@@ -575,7 +578,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTActionSheet_acknowledgement",
@@ -684,7 +688,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTAdSupport_acknowledgement",
@@ -793,7 +798,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTGeolocation_acknowledgement",
@@ -902,7 +908,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTImage_acknowledgement",
@@ -1011,7 +1018,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTNetwork_acknowledgement",
@@ -1120,7 +1128,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTPushNotification_acknowledgement",
@@ -1229,7 +1238,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTSettings_acknowledgement",
@@ -1338,7 +1348,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTText_acknowledgement",
@@ -1447,7 +1458,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTVibration_acknowledgement",
@@ -1556,7 +1568,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTWebSocket_acknowledgement",
@@ -1665,7 +1678,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "RCTLinkingIOS_acknowledgement",

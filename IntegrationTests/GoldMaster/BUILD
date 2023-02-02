@@ -166,7 +166,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "FBSDKCoreKit_cxx_acknowledgement",
@@ -287,7 +288,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "FBSDKCoreKit_acknowledgement",
@@ -1545,7 +1547,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Basics_acknowledgement",
@@ -2960,7 +2963,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "Core_acknowledgement",

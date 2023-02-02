@@ -258,6 +258,7 @@ public struct SwiftLibrary: BazelTarget {
                 .named(name: "generates_header", value: SkylarkNode.bool(true)),
                 .named(name: "features", value: ["swift.no_generated_module_map"].toSkylark()),
                 .named(name: "visibility", value: ["//visibility:public"].toSkylark()),
+                .named(name: "alwayslink", value: SkylarkNode.bool(false)),
             ]
         )
     }

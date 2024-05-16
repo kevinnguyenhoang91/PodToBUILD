@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env PYTHONHASHSEED=1 python3
 # update_pods.py Installs pods specified in Pods.WORKSPACE to $SRC_ROOT/Vendor/
 
 from subprocess import Popen, PIPE
@@ -29,11 +29,9 @@ def _exec(repository_ctx, command, cwd = None):
         print("_exec failed %d %s %s" % (process.returncode, result, error))
         sys.exit(1)
 
-    if repository_ctx.GetTrace():
-        print(result)
     if cwd:
         os.chdir(origWD)
-    return result
+    return result.decode("utf-8")
 
 def _cli_bool(b):
     if b:
@@ -131,7 +129,7 @@ class PodRepositoryContext(object):
         return self.trace
 
 def HashFile(path):
-    f = open(path, "rb")
+    f = open(path, "r", encoding="latin-1")
     f_hash = str(hash(f.read()))
     f.close()
     return str(f_hash)
@@ -205,7 +203,7 @@ def _needs_update(invocation_info):
     pod_root_dir = repository_ctx.GetPodRootDir()
     _exec(repository_ctx, ["/bin/bash", "-c", "mkdir -p " + pod_root_dir])
     _exec(repository_ctx, ["/bin/bash", "-c", "touch .pod-version"], pod_root_dir)
-    cached_version = _exec(repository_ctx, ["/bin/bash", "-c", "cat .pod-version"], pod_root_dir).split(b'\n')[0]
+    cached_version = _exec(repository_ctx, ["/bin/bash", "-c", "cat .pod-version"], pod_root_dir).split('\n')[0]
     return GetVersion(invocation_info) != cached_version
 
 def _load_repo_if_needed(repository_ctx, repo_tool_bin_path):
@@ -348,7 +346,7 @@ def _update_repo_impl(invocation_info):
             ["/bin/bash", "-c", script],
             repository_ctx.GetPodRootDir())
 
-    with open(repository_ctx.GetPodRootDir() + "/.pod-version", "w") as version_file:
+    with open(repository_ctx.GetPodRootDir() + "/.pod-version", "w", encoding="latin-1") as version_file:
         version_file.write(GetVersion(invocation_info))
 
 def new_pod_repository(name,

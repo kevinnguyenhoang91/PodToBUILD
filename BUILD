@@ -83,3 +83,33 @@ macos_unit_test(
     minimum_os_version = "10.13",
 )
 
+load(
+    "@bazel_tools//tools/python:toolchain.bzl",
+    "py_runtime_pair",
+)
+
+py_runtime(
+    name = "python3",
+    interpreter_path = "/usr/bin/python3",
+    stub_shebang = "#!/usr/bin/env PYTHONHASHSEED=1 python3",
+    python_version = "PY3",
+)
+
+py_runtime(
+    name = "python2",
+    interpreter_path = "/usr/bin/python3",
+    stub_shebang = "#!/usr/bin/env PYTHONHASHSEED=1 python3",
+    python_version = "PY2",
+)
+
+py_runtime_pair(
+    name = "py",
+    py3_runtime = ":python3",
+    py2_runtime = ":python2",
+)
+
+toolchain(
+    name = "py-toolchain",
+    toolchain = ":py",
+    toolchain_type = "@bazel_tools//tools/python:toolchain_type",
+)

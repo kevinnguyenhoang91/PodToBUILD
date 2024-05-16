@@ -51,11 +51,11 @@ def render_buildfile(pods):
 # swift_url = 'https://api.github.com/search/repositories?q=language:swift&sort=stars&order=desc&per_page=100'
 def main():
     # curl
-    with open(os.environ["HOME"] + "/Library/Caches/CocoaPods/Top100SwiftPods.json") as top_pods:
+    with open(os.environ["HOME"] + "/Library/Caches/CocoaPods/Top100SwiftPods.json", encoding="latin-1") as top_pods:
         repo_res = json.load(top_pods)
 
     # This is a value of search terms keyed by pods
-    with open(os.environ["HOME"] + "/Library/Caches/CocoaPods/search_index.json") as all_pods:
+    with open(os.environ["HOME"] + "/Library/Caches/CocoaPods/search_index.json", encoding="latin-1") as all_pods:
         pods_json = json.load(all_pods)
         pod_repo = pods_json["master"]
 

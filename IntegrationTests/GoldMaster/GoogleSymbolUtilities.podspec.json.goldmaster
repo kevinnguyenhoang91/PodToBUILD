@@ -120,7 +120,8 @@ objc_library(
   ],
   visibility = [
     "//visibility:public"
-  ]
+  ],
+  alwayslink = False
 )
 acknowledged_target(
   name = "GoogleSymbolUtilities_acknowledgement",

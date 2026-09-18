@@ -1,0 +1,24 @@
+{
+  "tiers": {
+    "reasoning": "claude-opus-5",
+    "coding": "claude-sonnet-5",
+    "fast": "claude-haiku-4.5"
+  },
+  "agent_tiers": {
+    "orch-sdlc": "reasoning",
+    "stage-problem-discovery": "reasoning",
+    "stage-product": "reasoning",
+    "stage-story-tasks": "reasoning",
+    "stage-architecture": "reasoning",
+    "stage-design": "reasoning",
+    "stage-development": "coding",
+    "stage-testing": "coding",
+    "stage-security": "reasoning",
+    "stage-review": "reasoning",
+    "stage-devops": "coding",
+    "stage-observability": "coding",
+    "stage-retirement": "reasoning",
+    "sub-*": "fast"
+  },
+  "overrides": {}
+}

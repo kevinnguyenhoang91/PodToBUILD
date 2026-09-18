@@ -1,0 +1,99 @@
+{
+  "stages": {
+    "stage-problem-discovery": {
+      "enabled": true,
+      "subagents": {
+        "sub-problem-statement-extractor": true,
+        "sub-user-research-synthesizer": true,
+        "sub-opportunity-analyzer": true,
+        "sub-solution-space-explorer": true
+      }
+    },
+    "stage-product": {
+      "enabled": true,
+      "subagents": {
+        "sub-requirement-parser": true,
+        "sub-acceptance-criteria": true,
+        "sub-risk-analyzer": true,
+        "sub-assumption-extractor": true
+      }
+    },
+    "stage-story-tasks": {
+      "enabled": true,
+      "subagents": {
+        "sub-story-writer": true,
+        "sub-task-decomposer": true,
+        "sub-dependency-mapper": true
+      }
+    },
+    "stage-architecture": {
+      "enabled": true,
+      "subagents": {
+        "sub-tech-stack-advisor": true,
+        "sub-solution-evaluator": true,
+        "sub-adr-writer": true
+      }
+    },
+    "stage-design": {
+      "enabled": true,
+      "subagents": {
+        "sub-interface-designer": true,
+        "sub-data-model-designer": true,
+        "sub-integration-planner": true,
+        "sub-nfr-evaluator": true
+      }
+    },
+    "stage-development": {
+      "enabled": true,
+      "subagents": {
+        "sub-repo-analyzer": true,
+        "sub-code-generator": true,
+        "sub-refactoring-agent": true,
+        "sub-documentation-agent": true
+      }
+    },
+    "stage-testing": {
+      "enabled": true,
+      "subagents": {
+        "sub-unit-test": true,
+        "sub-integration-test": true,
+        "sub-regression-test": true,
+        "sub-test-data": true
+      }
+    },
+    "stage-security": {
+      "enabled": true,
+      "subagents": {
+        "sub-secret-scanner": true,
+        "sub-dependency-scanner": true,
+        "sub-owasp-reviewer": true,
+        "sub-policy-validator": true
+      }
+    },
+    "stage-review": {
+      "enabled": true,
+      "subagents": {
+        "sub-code-review": true,
+        "sub-maintainability": true,
+        "sub-performance": true
+      }
+    },
+    "stage-devops": {
+      "enabled": true,
+      "subagents": {}
+    },
+    "stage-observability": {
+      "enabled": true,
+      "subagents": {}
+    },
+    "stage-retirement": {
+      "enabled": true,
+      "subagents": {
+        "sub-deprecation-planner": true,
+        "sub-migration-strategist": true,
+        "sub-data-retention-auditor": true,
+        "sub-decommission-executor": true
+      }
+    }
+  }
+}

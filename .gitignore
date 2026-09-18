@@ -17,3 +17,10 @@ PodsHost/
 *.xcworkspace
 PodToBUILD.zip
 .DS_Store
+# Autonomous SDLC Framework — runtime state (gitignored)
+.sdlc/state/
+.sdlc/queue/
+.sdlc/memory/
+.sdlc/artifacts/
+.sdlc/CONTINUITY.md
+.sdlc/archive/

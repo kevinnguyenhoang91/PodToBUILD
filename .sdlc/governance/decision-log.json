@@ -1,0 +1,48 @@
+{
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "run": "fix-error-xcode-27",
+      "phase": 0,
+      "decision": "GO \u2014 proceed to fix the Xcode 27 build failure",
+      "alternatives": [
+        "A1 don't build",
+        "A2 upgrade Bazel",
+        "A3 apple_cc_configure",
+        "A4 vendor toolchain",
+        "A5 repair in place"
+      ],
+      "rationale": "Total build stoppage; root cause proven; A5 validated end-to-end.",
+      "risk": "low",
+      "approval_status": "auto_executed",
+      "timestamp": "2026-09-18T09:26:19.700049+00:00"
+    },
+    {
+      "id": "DEC-002",
+      "run": "fix-error-xcode-27",
+      "phase": 4,
+      "decision": "ADR-001 \u2014 repair Bazel's driver binaries in place to restore LC_UUID",
+      "alternatives": [
+        "A2 upgrade Bazel",
+        "A4 vendor prebuilt local_config_cc"
+      ],
+      "rationale": "Same source/compiler/flags minus -Wl,-no_uuid; contained to Bazel's output base; self-disabling; empirically validated.",
+      "risk": "medium",
+      "approval_status": "auto_executed (medium risk: human_review_after)",
+      "timestamp": "2026-09-18T09:26:19.700049+00:00"
+    },
+    {
+      "id": "DEC-003",
+      "run": "fix-error-xcode-27",
+      "phase": 4,
+      "decision": "ADR-002 \u2014 defer the Bazel 7/8 + Bzlmod migration",
+      "alternatives": [
+        "Migrate now as part of this fix"
+      ],
+      "rationale": "Multi-day migration across rules_apple 1.1.3, rules_swift, 10 examples and integration tests; bundling it with an urgent unblock removes the working baseline needed to bisect.",
+      "risk": "high",
+      "approval_status": "pending (APR-001)",
+      "timestamp": "2026-09-18T09:26:19.700049+00:00"
+    }
+  ]
+}

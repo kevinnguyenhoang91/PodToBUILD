@@ -1,5 +1,12 @@
+# Restores LC_UUID on Bazel's generated C++ driver binaries so macOS 27 / Xcode 27 dyld can
+# load them. No-op on healthy toolchains. See tools/fix_toolchain_uuid.sh and
+# .sdlc/runs/fix-error-xcode-27/artifacts/architecture/ADR-001-toolchain-uuid-repair.md
+.PHONY: fix-toolchain
+fix-toolchain:
+	@tools/fix_toolchain_uuid.sh
+
 .PHONY: build
-build:
+build: fix-toolchain
 	@tools/bazel build \
 		--disk_cache=$(HOME)/Library/Caches/Bazel \
 		--spawn_strategy=local \
@@ -22,7 +29,7 @@ repo-tools: release
 goldmaster: build
 	@./MakeGoldMaster.sh
 
-unit-test:
+unit-test: fix-toolchain
 	tools/bazel test :PodToBUILDTests --test_strategy=standalone
 
 
@@ -82,7 +89,7 @@ ci: clean
 	$(MAKE) integration-test
 	$(MAKE) build-test
 
-release:
+release: fix-toolchain
 	@tools/bazel build \
 		--disk_cache=$(HOME)/Library/Caches/Bazel \
 		--spawn_strategy=local \

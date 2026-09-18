@@ -1,0 +1,51 @@
+{
+  "total_tokens": 504000,
+  "total_cost_usd": 6.048,
+  "budget_limit_usd": 100.0,
+  "breakdown": {
+    "base_execution": 504000,
+    "retry_overhead": 0,
+    "gate_failure_overhead": 0,
+    "conversation_overhead": 0,
+    "review_overhead": 0
+  },
+  "retry_stats": {
+    "total_retries": 0,
+    "tasks_failed_first_attempt": 0,
+    "average_retries_per_task": 0.0
+  },
+  "gate_stats": {
+    "gates_passed_first_attempt": 0,
+    "gates_failed": 0,
+    "average_retries_per_gate": 0.0
+  },
+  "by_phase": {
+    "0-problem-discovery": 48000,
+    "1-bootstrap": 9000,
+    "2-product": 42000,
+    "3-story-tasks": 28000,
+    "4-architecture": 46000,
+    "5-design": 44000,
+    "6-development": 95000,
+    "7-testing": 52000,
+    "8-security": 38000,
+    "9-review": 40000,
+    "10-devops": 26000,
+    "11-observability": 24000,
+    "completion": 12000
+  },
+  "by_agent": {
+    "stage-problem-discovery": 48000,
+    "orch-sdlc": 21000,
+    "stage-product": 42000,
+    "stage-story-tasks": 28000,
+    "stage-architecture": 46000,
+    "stage-design": 44000,
+    "stage-development": 95000,
+    "stage-testing": 52000,
+    "stage-security": 38000,
+    "stage-review": 40000,
+    "stage-devops": 26000,
+    "stage-observability": 24000
+  }
+}

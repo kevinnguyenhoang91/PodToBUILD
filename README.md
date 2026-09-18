@@ -375,3 +375,53 @@ swift package generate-xcodeproj
 ```
 
 PRs welcome :)!
+
+### Building on macOS 27 / Xcode 27 (`missing LC_UUID`)
+
+`make build` runs `tools/fix_toolchain_uuid.sh` automatically before invoking Bazel. If you
+build without `make`, run it yourself first.
+
+**Why.** This repo pins Bazel 6.3.2 (`.bazelversion`, `tools/bazel`). Bazel 6.3.2 generates its
+macOS C++ driver binaries with `-Wl,-no_uuid` (`osx_cc_configure.bzl`), which strips the
+`LC_UUID` load command. The dyld in macOS 27 / Xcode 27 refuses to load a Mach-O executable that
+has no `LC_UUID`, so every C/C++/ObjC action aborts with:
+
+```
+dyld: missing LC_UUID load command in external/local_config_cc/wrapped_clang
+```
+
+Two generated binaries are affected: `wrapped_clang` (and its `wrapped_clang_pp` symlink), which
+is fatal, and `libtool_check_unique`, which fails *silently* — `libtool` ignores the abort, so
+duplicate-symbol checking is skipped on every archive link.
+
+**What the script does.** It lets Bazel generate the toolchain normally, then — only if
+`LC_UUID` is actually missing — recompiles those binaries from Bazel's own embedded sources
+using Bazel's own command line with `-Wl,-no_uuid` removed, ad-hoc codesigns them exactly as
+Bazel does, and installs them atomically. Writes are confined to
+`$(bazel info output_base)/external/local_config_cc/`; nothing in the repo, the system toolchain,
+or Xcode is modified, and no binary is committed.
+
+```sh
+tools/fix_toolchain_uuid.sh            # detect and repair (what `make build` runs)
+tools/fix_toolchain_uuid.sh --check    # report only; exit 0 = healthy, 1 = repair needed
+tools/test_fix_toolchain_uuid.sh --full # regression suite, incl. a from-scratch build
+```
+
+For an example (each has its own Bazel output base, so each needs its own repair):
+
+```sh
+cd Examples/BasiciOS
+BAZEL=bazel BAZEL_TARGETS=//... ../../tools/fix_toolchain_uuid.sh && make
+```
+
+**When to delete it.** The `LC_UUID` probe is the enable condition, so the script is already a
+no-op on a healthy toolchain. Once this repo moves to a Bazel release that no longer passes
+`-Wl,-no_uuid`, `tools/fix_toolchain_uuid.sh --check` will exit 0 on a freshly generated
+toolchain — that is the signal that the script and its `Makefile` hooks can be removed.
+
+**Known issue, unrelated to the above:** `make unit-test` currently fails on Xcode 27 even
+though the build succeeds. All 41 XCTest assertions pass, but 10 test helpers abort with
+`Missing bazel test base` because rules_apple 1.1.3 runs tests through
+`xcodebuild test-without-building` and does not propagate Bazel's `TEST_SRCDIR` into the test
+process. That is a separate rules_apple/Xcode incompatibility, not a toolchain-binary problem,
+and it is addressed by the Bazel/rules_apple upgrade rather than by this script.

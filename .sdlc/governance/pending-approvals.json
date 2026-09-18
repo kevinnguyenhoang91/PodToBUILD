@@ -1,0 +1,20 @@
+{
+  "approvals": [
+    {
+      "id": "APR-001",
+      "run": "fix-error-xcode-27",
+      "phase": 4,
+      "phase_name": "architecture",
+      "decision": "ADR-002 \u2014 Defer the Bazel 7/8 + Bzlmod migration",
+      "risk": "high",
+      "matched_pattern": "architecture decision|technology choice|adr",
+      "approval_required": true,
+      "status": "pending",
+      "blocking": false,
+      "blocking_rationale": "ADR-002 records a deferral and authorizes no code change. ADR-001 (the Xcode 27 repair) is independently implementable and does not depend on it, so the pipeline continues. This approval governs whether and when the Bazel migration is scheduled.",
+      "artifact": ".sdlc/runs/fix-error-xcode-27/artifacts/architecture/ADR-002-defer-bazel-migration.md",
+      "requested_at": "2026-09-18T09:26:19.700049+00:00",
+      "requested_by": "stage-architecture"
+    }
+  ]
+}
